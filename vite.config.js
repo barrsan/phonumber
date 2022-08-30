@@ -7,7 +7,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'phonumber',
-      formats: ['es'],
+      formats: ['es', 'cjs'],
       fileName: 'index',
     },
   },
