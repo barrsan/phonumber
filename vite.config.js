@@ -8,7 +8,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'phonumber',
       formats: ['es'],
-      fileName: 'phonumber',
+      fileName: 'index',
     },
   },
   plugins: [dts()],

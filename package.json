@@ -1,12 +1,15 @@
 {
   "name": "phonumber",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Phone number parser. Good for formatting phone numbers entered by users.",
-  "type": "module",
   "files": [
-    "dist"
+    "dist/"
   ],
-  "main": "./dist/phonumber.js",
+  "types": "dist/types/index.d.ts",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -23,7 +26,10 @@
   "author": "Alex Baretsky (https://github.com/barrsan)",
   "homepage": "https://github.com/barrsan/phonumber",
   "license": "MIT",
-  "repository": "https://github.com/barrsan/phonumber.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barrsan/phonumber.git"
+  },
   "bugs": {
     "url": "https://github.com/barrsan/phonumber/issues"
   },
