@@ -1,6 +1,4 @@
-import { parsePhoneNumber } from '../main';
-import { regexp } from '../constants';
-import { Resolver, Formats } from '../types';
+import { parsePhoneNumber, Resolver, Formats } from '../main';
 
 document.addEventListener('DOMContentLoaded', () => {
   const input = <HTMLInputElement>document.querySelector('[name=phone]');
@@ -36,51 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   };
 
-  let currentDialCode: string | null = null;
-
-  input.onkeydown = (e) => {
-    const target = <HTMLInputElement>e.target;
-    const { value } = target;
-
-    const prevChar = value.slice(
-      target.selectionStart! - 1,
-      target.selectionEnd!,
-    );
-
-    if (
-      target.selectionStart === target.selectionEnd &&
-      regexp.REGEXP_ONLY_DIGITS.test(prevChar) &&
-      e.key === 'Backspace'
-    ) {
-      if (value === currentDialCode || value === '+') {
-        input.value = '';
-      } else {
-        input.value = value.slice(0, value.length - 1);
-      }
-    }
-  };
-
   input.onkeyup = (e) => {
     const target = <HTMLInputElement>e.target;
     const { value } = target;
     let result = null;
 
-    if (value) {
-      if ((value.length === 1 && value === '+') || value.startsWith('+')) {
-        result = parsePhoneNumber(value, { formats });
-      } else {
-        result = parsePhoneNumber(value, {
-          resolvers,
-          formats,
-        });
-      }
+    result = parsePhoneNumber(value, {
+      resolvers,
+      formats,
+    });
 
-      currentDialCode = result.dialCode;
-      input.value = result.formattedNumber;
-      countryCode.innerHTML = result.code || '';
+    input.value = result.formattedNumber;
+    countryCode.innerHTML = result.code || '';
 
-      // eslint-disable-next-line no-console
-      console.log('🤙 => ', result);
-    }
+    // eslint-disable-next-line no-console
+    console.log('🤙 => ', result);
   };
 });
