@@ -1,7 +1,12 @@
 import { regexp } from './constants';
 import { SetMaskParams } from './types';
 
-const { REGEXP_ALL_HASHES, REGEXP_MASK_SYMBOLS, REGEXP_CLEANED_MASK } = regexp;
+const {
+  REGEXP_ALL_HASHES,
+  REGEXP_MASK_SYMBOLS,
+  REGEXP_CLEANED_MASK,
+  REGEXP_ONLY_DIGITS,
+} = regexp;
 
 const setMask = ({ mask, value, options }: SetMaskParams) => {
   let i = 0;
@@ -35,7 +40,7 @@ const setMask = ({ mask, value, options }: SetMaskParams) => {
 
   const result = maskedData.split('_')[0].trim();
 
-  return `${result}${tail}`;
+  return `${result}${tail}`.replace(REGEXP_ONLY_DIGITS, '');
 };
 
 export default setMask;
