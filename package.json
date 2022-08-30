@@ -1,14 +1,14 @@
 {
   "name": "phonumber",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Phone number parser. Good for formatting phone numbers entered by users.",
   "files": [
     "dist/"
   ],
   "types": "dist/types/index.d.ts",
-  "main": "dist/index.js",
+  "main": "./dist/dist/index.mjs",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.mjs"
   },
   "scripts": {
     "dev": "vite",
