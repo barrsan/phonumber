@@ -1,19 +1,12 @@
 {
   "name": "phonumber",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Phone number parser. Good for formatting phone numbers entered by users.",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/phonumber.umd.cjs",
-  "module": "./dist/phonumber.js",
-  "exports": {
-    ".": {
-      "import": "./dist/phonumber.js",
-      "require": "./dist/phonumber.umd.cjs"
-    }
-  },
+  "main": "./dist/phonumber.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -47,6 +40,7 @@
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.8",
     "typescript": "^4.6.4",
-    "vite": "^3.0.7"
+    "vite": "^3.0.7",
+    "vite-plugin-dts": "^1.4.1"
   }
 }
