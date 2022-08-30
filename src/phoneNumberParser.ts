@@ -3,7 +3,7 @@ import applyResolvers from './applyResolvers';
 import setMask from './setMask';
 import { ParserPhoneNumberResult, ParserPhoneNumberOptions } from './types';
 
-const { REGEXP_ONLY_DIGITS } = regexp;
+const { REGEXP_ONLY_DIGITS, REGEXP_LAST_NONE_DIGIT } = regexp;
 
 const parsePhoneNumber = (
   phone: string,
@@ -12,6 +12,8 @@ const parsePhoneNumber = (
   const resolvers = options?.resolvers;
   const formats = options?.formats;
 
+  const firstCharDirty = phone.charAt(0);
+
   const cleanPhone = phone.trim().replace(REGEXP_ONLY_DIGITS, '');
   const secondChar = cleanPhone.length > 1 ? cleanPhone.charAt(1) : '';
 
@@ -19,7 +21,7 @@ const parsePhoneNumber = (
   let currentCell = null;
   let currentPhone = cleanPhone;
 
-  if (resolvers && firstChar) {
+  if (resolvers && firstChar && firstCharDirty !== '+') {
     const { resolvedCell, resolvedPhone } = applyResolvers({
       value: cleanPhone,
       resolvers,
@@ -33,7 +35,7 @@ const parsePhoneNumber = (
     code: null,
     dialCode: null,
     nationalNumber: null,
-    formattedNumber: `+${currentPhone}`,
+    formattedNumber: !phone ? '' : `+${currentPhone}`,
   };
 
   if (firstChar && firstChar !== '0') {
@@ -68,13 +70,15 @@ const parsePhoneNumber = (
         options: {
           withTail: !!formatOptions?.withTail,
         },
-      })}`.trim();
+      })}`
+        .trim()
+        .replace(REGEXP_LAST_NONE_DIGIT, '');
 
       return {
         code,
         dialCode,
         nationalNumber,
-        formattedNumber,
+        formattedNumber: !phone ? '' : formattedNumber,
       };
     }
   }
