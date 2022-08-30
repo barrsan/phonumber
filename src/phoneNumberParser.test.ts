@@ -13,7 +13,7 @@ describe('Parser tests', () => {
     code: null,
     dialCode: null,
     nationalNumber: null,
-    formattedNumber: '+',
+    formattedNumber: '',
   };
 
   const resolvers: Array<Resolver> = [
