@@ -5,7 +5,7 @@ const {
   REGEXP_ALL_HASHES,
   REGEXP_MASK_SYMBOLS,
   REGEXP_CLEANED_MASK,
-  REGEXP_ONLY_DIGITS,
+  REGEXP_LAST_NONE_DIGIT,
 } = regexp;
 
 const setMask = ({ mask, value, options }: SetMaskParams) => {
@@ -40,7 +40,7 @@ const setMask = ({ mask, value, options }: SetMaskParams) => {
 
   const result = maskedData.split('_')[0].trim();
 
-  return `${result}${tail}`.replace(REGEXP_ONLY_DIGITS, '');
+  return `${result}${tail}`.replace(REGEXP_LAST_NONE_DIGIT, '');
 };
 
 export default setMask;
