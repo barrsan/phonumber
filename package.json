@@ -1,6 +1,6 @@
 {
   "name": "phonumber",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Phone number parser. Good for formatting phone numbers entered by users.",
   "files": [
     "dist/"
