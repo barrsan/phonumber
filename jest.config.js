@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   preset: 'ts-jest',
   rootDir: '.',
   roots: ['<rootDir>/src'],
