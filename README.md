@@ -2,6 +2,9 @@
 
 Phonumber - it is phone number parser. Good for formatting phone numbers entered by users.
 
+## Example
+
+[CodeSandbox Demo](https://codesandbox.io/s/phonumber-with-react-example-j9ps51)
 
 ## Installation
 
