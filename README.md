@@ -46,7 +46,7 @@ You can tell the parser how to resolve the value passed to it.
 | **firstInputChars** | Object (required) | It is an object where keys are first input char sended to parser and values are object which contains resolver options for this char. |
 | **resolveAs** | Object (required) | Data whitch detect how resolve first input char. |
 
-#### firstInputChars property
+#### firstInputChars
 
 | Property | Type | Description|
 |---|---|---|
